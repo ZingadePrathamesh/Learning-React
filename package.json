@@ -1,0 +1,19 @@
+{
+  "name": "learning-react-main",
+  "version": "1.0.0",
+  "description": "learing react",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZingadePrathamesh/Learning-React.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZingadePrathamesh/Learning-React/issues"
+  },
+  "homepage": "https://github.com/ZingadePrathamesh/Learning-React#readme"
+}
