@@ -1,12 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
-import HelloWorld from './components/Footer';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Content from './components/Content';
 
 function App() {
   return (
     <div className="App">
-      Hello
-      <HelloWorld nam = "World"/>
+      <Header/>
+      <Content/>
+      <Footer/>
     </div>
   );
 }

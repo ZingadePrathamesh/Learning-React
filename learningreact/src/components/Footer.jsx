@@ -1,7 +1,9 @@
-export default function HelloWorld(props){
+const Footer = (props) => {
     return(
-        <div>
-            {props.nam}
-        </div>
-    )
+    <footer>
+        <h1>Footer</h1>
+    </footer>
+    );
 }
+
+export default Footer;
