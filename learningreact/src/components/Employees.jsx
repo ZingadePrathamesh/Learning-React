@@ -22,11 +22,11 @@ const Employees = ({selectedTeam, employees, handleEmployeeChange, handleTeamSel
                   <div className="card-collection">
                     {employees.map(emp =>
                         <div key={emp.id} id = {emp.id} className={(emp.teamName === selectedTeam)?'card m-3 standout':'card m-3'} 
-                                  style={{width:18 + "rem", cursor: "pointer"}} onClick={handleEmployeeChange}>
+                                  style={{width:14 + "rem", cursor: "pointer"}} onClick={handleEmployeeChange}>
                             {(emp.gender==="female") 
-                                      && <img src={femaleProfile} className="card-img-top" style={{height:18 + "rem", width:18 + "rem"}}></img>}
+                                      && <img src={femaleProfile} className="card-img-top" style={{height:14 + "rem", width:14 + "rem"}}></img>}
                             {(emp.gender==="male") 
-                                      && <img src={maleProfile} className="card-img-top" style={{height:18 + "rem", width:18 + "rem"}}></img>}
+                                      && <img src={maleProfile} className="card-img-top" style={{height:14 + "rem", width:14 + "rem"}}></img>}
                             <div className="card-body">
                                 <h5 className="card-title">Name: {emp.fullName}</h5>
                                 <p className="card-text"><b>Designation: </b>{emp.designation}</p>
