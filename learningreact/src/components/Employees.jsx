@@ -1,7 +1,10 @@
 import { useState } from "react";
 import femaleProfile from '../images/female_profile.png';
+import maleProfile from '../images/male_profile.png';
 
 const Employees = (props)=>{
+    const [selectedTeam, setTeam] = useState("Team A")
+
     const [employees, setEmployees] = useState([{
         id: 1,
         fullName: "Bob Jones",
@@ -86,16 +89,47 @@ const Employees = (props)=>{
         gender: "male",
         teamName: "TeamD"
       }]);
+
+      function handleTeamSelection(event) {
+        setTeam(event.target.value);
+      }
+
+      function handleEmployeeChange(event){
+        const transformedEmployee = employees.map((emp) => emp.id === parseInt(event.currentTarget.id)
+        ?(emp.teamName === selectedTeam)?{...emp, teamName:''}:{...emp, teamName : selectedTeam}: emp);
+
+        setEmployees(transformedEmployee);
+      }
+
     return(
         <main className="container">
-            <div className="row">
+            <div className="row justify-content-center m-2">
+                <div className = "col-6">
+                  <select className="form-select form-select-lg" value={selectedTeam} onChange={handleTeamSelection}>
+                    <option value="Team A">Team A</option>
+                    <option value="Team B">Team B</option>
+                    <option value="Team C">Team C</option>
+                    <option value="Team D">Team D</option>
+                  </select>
+                </div>
+            </div>
+            <div className="row justify-content-center">
                 <div className = "col-8">
+                  <div className="card-collection">
                     {employees.map(emp =>
-                        <div key={emp.id}>
-                            <img src={femaleProfile} className="card-div-top"></img>
-                            <div>{emp.fullName}</div>
+                        <div key={emp.id} id = {emp.id} className={(emp.teamName === selectedTeam)?'card m-3 standout':'card m-3'} 
+                                  style={{width:18 + "rem", cursor: "pointer"}} onClick={handleEmployeeChange}>
+                            {(emp.gender==="female") 
+                                      && <img src={femaleProfile} className="card-img-top" style={{height:18 + "rem", width:18 + "rem"}}></img>}
+                            {(emp.gender==="male") 
+                                      && <img src={maleProfile} className="card-img-top" style={{height:18 + "rem", width:18 + "rem"}}></img>}
+                            <div className="card-body">
+                                <h5 className="card-title">Name: {emp.fullName}</h5>
+                                <p className="card-text"><b>Designation: </b>{emp.designation}</p>
+                            </div>
                         </div>
                     )}
+                  </div>
                 </div>
             </div>
         </main>
