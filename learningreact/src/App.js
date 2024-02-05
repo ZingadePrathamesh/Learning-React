@@ -2,14 +2,16 @@
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Content from './components/Content';
-import { useState } from "react";
+import {BrowserRouter, Route, BrowserRouter as Router, Routes} from 'react-router-dom';
+import { useState, useEffect } from "react";
 import Employees from './components/Employees';
+import GroupedTeam from './components/GroupedTeam';
+import Nav from './components/Nav';
 
 function App() {
-  const [selectedTeam, setTeam] = useState("Team A")
+  const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('Selected Team')) || "Team A")
 
-  const [employees, setEmployees] = useState([{
+  const [employees, setEmployees] = useState(JSON.parse(localStorage.getItem('EmployeeList')) || [{
       id: 1,
       fullName: "Bob Jones",
       designation: "JavaScript Developer",
@@ -94,6 +96,17 @@ function App() {
       teamName: "TeamD"
     }]);
 
+    useEffect(
+      ()=>{
+        localStorage.setItem('EmployeeList', JSON.stringify(employees))
+      },[employees])
+
+      useEffect(
+      ()=>{
+        localStorage.setItem('Selected Team', JSON.stringify(selectedTeam))
+      },[selectedTeam])
+
+
     function handleTeamSelection(event) {
       setTeam(event.target.value);
     }
@@ -107,15 +120,22 @@ function App() {
 
   return (
     <div className="App">
-      <Header selectedTeam = {selectedTeam}
-      employeeCount = {employees.filter(emp => emp.teamName === selectedTeam).length}/>
-      <Employees 
-      selectedTeam={selectedTeam}
-      employees ={employees}
-      handleEmployeeChange={handleEmployeeChange}
-      handleTeamSelection={handleTeamSelection}
-      />
-      <Footer/>
+      <BrowserRouter>
+        <Nav/>
+        <Header selectedTeam = {selectedTeam}
+        employeeCount = {employees.filter(emp => emp.teamName === selectedTeam).length}/>
+        <Routes>
+          <Route path='/' element={<Employees 
+            selectedTeam={selectedTeam}
+            employees ={employees}
+            handleEmployeeChange={handleEmployeeChange}
+            handleTeamSelection={handleTeamSelection}
+            />}
+          />
+          <Route path='/grouped-team' element = {<GroupedTeam/>}/>
+        </Routes>
+        <Footer/>
+      </BrowserRouter>
     </div>
   );
 }
