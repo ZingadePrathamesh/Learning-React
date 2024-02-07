@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 const Nav = ()=>{
     return(
-        <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body">
+        <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body p-2">
             <ul className="navbar-nav">
-                <li className="nav-brand text-white text-lg">
-                    Employee Team Management
+                <li className="nav-item ">
+                    <h4 className="navbar-brand text-white ">Employee Team Management</h4>
                 </li>
                 <li className="nav-item ">
                     <Link to="/" className="nav-link text-white">Home</Link>
