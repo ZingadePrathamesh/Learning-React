@@ -1,7 +1,6 @@
-const GroupedTeam = (props)=>{
-    return(
-    <div>
-        Grouped Team
+const GroupedTeam = ({employee, selectedTeam, setTeam})=>{
+    return(<div>
+        <h2>Selected Team: {selectedTeam}</h2>
     </div>);
 }
 

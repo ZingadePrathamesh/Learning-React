@@ -5,8 +5,9 @@ import Footer from './components/Footer';
 import {BrowserRouter, Route, BrowserRouter as Router, Routes} from 'react-router-dom';
 import { useState, useEffect } from "react";
 import Employees from './components/Employees';
-import GroupedTeam from './components/GroupedTeam';
 import Nav from './components/Nav';
+import GroupedTeam from './components/GroupedTeam';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   const [selectedTeam, setTeam] = useState(JSON.parse(localStorage.getItem('Selected Team')) || "Team A")
@@ -132,7 +133,13 @@ function App() {
             handleTeamSelection={handleTeamSelection}
             />}
           />
-          <Route path='/grouped-team' element = {<GroupedTeam/>}/>
+          <Route path='/grouped-teams' element={<GroupedTeam 
+            selectedTeam={selectedTeam}
+            employees ={employees}
+            setTeam={setTeam}
+            />}
+          />
+          <Route path='/*' element={<ErrorPage/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
