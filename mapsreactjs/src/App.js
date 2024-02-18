@@ -1,11 +1,11 @@
 
 import './App.css';
-import MapsComponent from './Map';
+import LoginComponent from './LoginComponent';
 
 function App() {
   return (
     <div className="App">
-      <MapsComponent/>
+      <LoginComponent/>
     </div>
   );
 }
