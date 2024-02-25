@@ -15,8 +15,8 @@ export default function Navbar(){
                     <img src={pexel_logo} alt="pexel_logo" height={80} width={80} className="logo-img"/>
                 </Link>
 
-                <div className="nav-elements">
-                    <ul className="nav-elements-ul">
+                <div className='nav-elements' >
+                    <ul className={`${navClicked? 'nav-elements-ul active': 'nav-elements-ul' }`}>
                         <li><Link className="nav-elements-link active" to="/">Explore</Link></li>
                         <li><Link className="nav-elements-link" to="/">License</Link></li>
                         <li><Link className="nav-elements-link" to="/">Upload</Link></li>

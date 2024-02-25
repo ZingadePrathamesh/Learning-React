@@ -56,19 +56,25 @@ nav{
         flex-direction: column;
         align-items: flex-start;
         position: fixed;
+        margin: 0px;
         justify-content: flex-start;
-        right: 0px;
+        right: -300px;
         top: 140px;
         background-color: #000000;
-        padding: 60px 60px 80px 20px;
+        padding: 60px 120px 80px 20px;
+        transition: 0.3s ease-in-out;
     }
-    .nav-elements-li{
+
+    .nav-elements-ul.active{
+        right: 0px;
+    }
+
+    .nav-elements li{
         color: white;
-        margin-bottom: 60px;
+        margin-bottom: 36px;
     }
     .nav-elements-link{
         text-decoration: none;
-        margin-bottom: 60px;
         color: #fff;
         font-size: xx-large;
         transition: 0.3s ease-in-out;
@@ -77,5 +83,6 @@ nav{
 
     .mobile{
         display: block;
+        cursor: pointer;
     }
 }
